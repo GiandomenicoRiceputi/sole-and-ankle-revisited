@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 
-import {COLORS, QUERIES, WEIGHTS} from '../../constants';
+import { QUERIES, WEIGHTS } from '../../constants';
 import Logo from '../Logo';
 import SuperHeader from '../SuperHeader';
 import MobileMenu from '../MobileMenu';
@@ -41,7 +41,7 @@ const Header = () => {
                   <Icon id="search" />
                   <VisuallyHidden>Search</VisuallyHidden>
               </UnstyledButton>
-              <UnstyledButton>
+              <UnstyledButton onClick={() => setShowMobileMenu(true)}>
                   <Icon id="menu" />
                   <VisuallyHidden>Open menu</VisuallyHidden>
               </UnstyledButton>
@@ -61,13 +61,13 @@ const MainHeader = styled.div`
   display: flex;
   align-items: baseline;
   padding: 18px 32px;
-  height: 72px;
-  border-bottom: 1px solid ${COLORS.gray[300]};
+  border-bottom: 1px solid --var(color-gray-300);
+  overflow: auto;
 
   @media ${QUERIES.tabletAndSmaller} {
     justify-content: space-between;
     align-items: center;
-    border-top: 4px solid ${COLORS.gray[900]};
+    border-top: 4px solid var(--color-gray-900);
   }
   @media ${QUERIES.phoneAndSmaller} {
     padding-left: 16px;
@@ -77,7 +77,7 @@ const MainHeader = styled.div`
 
 const DesktopNav = styled.nav`
   display: flex;
-  gap: 48px;
+  gap: clamp(1rem, 9.2vw - 4.5rem, 3.5rem);
   margin: 0px 48px;
   @media ${QUERIES.tabletAndSmaller} {
     display: none;
@@ -117,11 +117,11 @@ const NavLink = styled.a`
   font-size: 1.125rem;
   text-transform: uppercase;
   text-decoration: none;
-  color: ${COLORS.gray[900]};
+  color: var(--color-gray-900);
   font-weight: ${WEIGHTS.medium};
 
   &:first-of-type {
-    color: ${COLORS.secondary};
+    color: var(--color-secondary);
   }
 `;
 
